@@ -11,9 +11,8 @@ public class StudentService {
         this.repository = new StudentRepository();
     }
 
-    public void addStudent(String name, double grade) {
-        // Lógica simple para asignar un ID automático
-        StudentEntity student = new StudentEntity((int)(Math.random() * 1000), name, grade);
+    public void addStudent(String name, String grade) {
+        StudentEntity student = new StudentEntity(name, grade);
         repository.save(student);
     }
 

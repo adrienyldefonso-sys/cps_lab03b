@@ -1,6 +1,8 @@
 package pe.edu.tecsup.lab03.controllers;
 
+import pe.edu.tecsup.lab03.entities.StudentEntity;
 import pe.edu.tecsup.lab03.services.StudentService;
+import java.util.List;
 
 public class StudentController {
     private StudentService service;
@@ -9,15 +11,14 @@ public class StudentController {
         this.service = new StudentService();
     }
 
-    public void createStudent(String name, double grade) {
-        service.addStudent(name, grade);
-        System.out.println("Estudiante registrado: " + name);
-    }
+    public void manageStudents() {
+        // Ejemplo de lógica
+        service.addStudent("Adriel", "17.5");
+        service.addStudent("Carlos", "14.0");
 
-    public void showAllStudents() {
-        System.out.println("--- Lista de Estudiantes ---");
-        service.getStudents().forEach(s ->
-                System.out.println("ID: " + s.getId() + " | Nombre: " + s.getName() + " | Nota: " + s.getGrade())
-        );
+        List<StudentEntity> list = service.getStudents();
+        for (StudentEntity s : list) {
+            System.out.println("Alumno: " + s.getName() + " - Nota: " + s.getGrade());
+        }
     }
 }
